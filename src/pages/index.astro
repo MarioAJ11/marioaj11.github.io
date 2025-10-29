@@ -1,35 +1,207 @@
-import "../styles/global.css";
+---
+import Layout from "../layouts/Layout.astro";
+---
+<Layout title="Mario Alguacil Juárez · Desarrollador Backend y Aplicaciones">
+		<section id="inicio" class="reveal flex flex-col gap-12 md:flex-row md:items-center">
+			<div class="flex-1 space-y-6">
+			<span class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1 text-sm font-semibold text-pastelOrange shadow">
+				Disponible para nuevas oportunidades
+			</span>
+			<h1 class="text-4xl font-bold text-gray-900 md:text-5xl">
+				Hola, soy Mario Alguacil Juárez
+			</h1>
+			<p class="max-w-xl text-lg text-gray-600">
+				Técnico Superior en Desarrollo de Aplicaciones Multiplataforma con foco en backend y aplicaciones móviles.
+				Me apasiona transformar ideas en productos digitales cuidados, con tecnologías modernas y una fuerte base en programación orientada a objetos.
+			</p>
+			<div class="flex flex-wrap items-center gap-4">
+				<a href="#proyectos" class="rounded-full bg-pastelOrange px-6 py-3 text-sm font-semibold text-white shadow transition hover:brightness-110">
+					Ver proyectos destacados
+				</a>
+				<a href="mailto:alguacilmario6@gmail.com" class="rounded-full border border-pastelOrange px-6 py-3 text-sm font-semibold text-pastelOrange transition hover:bg-pastelOrange/10">
+					Escríbeme
+				</a>
+			</div>
+			<dl class="grid gap-4 text-sm text-gray-600 md:grid-cols-2">
+				<div class="flex items-start gap-2">
+					<dt class="font-semibold text-gray-800">Rol actual</dt>
+					<dd>Desarrollador backend y de aplicaciones multiplataforma</dd>
+				</div>
+				<div class="flex items-start gap-2">
+					<dt class="font-semibold text-gray-800">Ubicación</dt>
+					<dd>Córdoba, España · Disponible remoto</dd>
+				</div>
+				<div class="flex items-start gap-2">
+					<dt class="font-semibold text-gray-800">Contacto</dt>
+					<dd>642 861 633 · alguacilmario6@gmail.com</dd>
+				</div>
+				<div class="flex items-start gap-2">
+					<dt class="font-semibold text-gray-800">Edad</dt>
+					<dd>19 años</dd>
+				</div>
+			</dl>
+		</div>
+			<div class="flex-1">
+				<figure class="mx-auto flex h-64 w-64 items-center justify-center overflow-hidden rounded-full border-4 border-pastelBlue bg-white shadow-lg">
+					<img
+						src="/images/mario-alguacil.jpg"
+						alt="Retrato de Mario Alguacil Juárez"
+						class="h-full w-full object-cover"
+						loading="lazy"
+					/>
+				</figure>
+		</div>
+	</section>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>Portafolio Astro + Tailwind</title>
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-		<style>
-			body { font-family: 'Inter', sans-serif; }
-		</style>
-	</head>
-	<body class="bg-pastelBlue min-h-screen flex flex-col items-center justify-center">
-			<h1 id="titulo" class="text-4xl font-bold text-pastelOrange mb-4 font-inter">¡Bienvenido a mi portafolio!</h1>
-			<p class="text-lg text-white font-inter">Sitio creado con Astro y Tailwind CSS.</p>
-			<script type="module">
-				import gsap from 'gsap';
-				window.addEventListener('DOMContentLoaded', () => {
-					gsap.from('#titulo', { opacity: 0, y: -40, duration: 1 });
-				});
-			</script>
-	</body>
-</html>
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+	<section id="perfil" class="reveal mt-20 space-y-6">
+		<h2 class="text-2xl font-semibold text-gray-900">Perfil profesional</h2>
+		<p class="text-lg text-gray-600">
+			Técnico Superior en Desarrollo de Aplicaciones Multiplataforma con experiencia en programación orientada a objetos, bases de datos, aplicaciones móviles y tecnologías web. Actualmente me especializo en videojuegos y realidad virtual.
+			Busco participar en equipos tecnológicos donde pueda aplicar mis conocimientos, aprender rápido y crear experiencias digitales de calidad.
+		</p>
+	</section>
+
+	<section class="reveal mt-16 grid gap-8 md:grid-cols-2">
+		<article class="rounded-2xl bg-white p-6 shadow">
+			<span class="text-xs font-semibold uppercase tracking-wide text-pastelOrange">Experiencia</span>
+			<h3 class="mt-3 text-xl font-semibold text-gray-900">Desarrollo de aplicación · Paradigma Media Andalucía</h3>
+			<p class="mt-1 text-sm text-gray-500">Córdoba, España · Abr. 2025 - Jun. 2025</p>
+			<p class="mt-4 text-gray-600">
+				Desarrollo de una aplicación nativa en Android, actualmente en producción y próxima a iOS. Permite escuchar los programas de la asociación Paradigma Media Andalucía. Participo en el desarrollo continuo, la publicación y el mantenimiento evolutivo.
+			</p>
+		</article>
+		<article class="rounded-2xl bg-white p-6 shadow">
+			<span class="text-xs font-semibold uppercase tracking-wide text-pastelOrange">Formación</span>
+			<div class="mt-3 space-y-4 text-gray-600">
+				<div>
+					<h3 class="text-xl font-semibold text-gray-900">Desarrollo de Aplicaciones Multiplataforma</h3>
+					<p class="text-sm text-gray-500">IES Gran Capitán · Córdoba · Sep. 2023 - Jun. 2025</p>
+				</div>
+				<div>
+					<h3 class="text-xl font-semibold text-gray-900">Bachillerato</h3>
+					<p class="text-sm text-gray-500">IES Nieves López Pastor · Villanueva del Arzobispo · Sep. 2021 - Jun. 2023</p>
+				</div>
+			</div>
+		</article>
+	</section>
+
+	<section id="proyectos" class="reveal mt-20 space-y-10">
+		<div class="flex items-center justify-between">
+			<h2 class="text-2xl font-semibold text-gray-900">Proyectos destacados</h2>
+			<a href="https://github.com/MarioAJ11" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-pastelOrange hover:underline">
+				Ver repositorios
+			</a>
+		</div>
+		<article class="grid gap-8 rounded-3xl bg-white p-8 shadow md:grid-cols-2">
+			<div class="space-y-4">
+				<span class="inline-flex items-center gap-2 rounded-full bg-pastelBlue/20 px-3 py-1 text-xs font-semibold text-pastelBlue">
+					Aplicación móvil
+				</span>
+				<h3 class="text-xl font-semibold text-gray-900">Paradigma Radio</h3>
+				<p class="text-gray-600">
+					Aplicación disponible en Google Play para escuchar, a la carta, los programas de Paradigma Media Andalucía. Construida con un enfoque nativo en Android y preparada para despliegue en iOS.
+				</p>
+				<ul class="flex flex-wrap gap-2 text-xs font-semibold text-gray-500">
+					<li class="rounded-full bg-gray-100 px-3 py-1">Kotlin</li>
+					<li class="rounded-full bg-gray-100 px-3 py-1">Android</li>
+					<li class="rounded-full bg-gray-100 px-3 py-1">Firebase</li>
+				</ul>
+				<div class="flex flex-wrap gap-3 pt-2">
+					<a href="https://play.google.com/store/apps/details?id=org.paradigmamedia.paradigmaapp&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" class="rounded-full bg-pastelOrange px-5 py-2 text-sm font-semibold text-white transition hover:brightness-110">
+						Ver en Google Play
+					</a>
+					<span class="rounded-full border border-dashed border-pastelOrange px-5 py-2 text-sm font-semibold text-pastelOrange opacity-70">
+						GIF de la app próximamente
+					</span>
+				</div>
+			</div>
+			<div class="flex items-center justify-center">
+				<div class="flex aspect-[9/16] w-full max-w-xs items-center justify-center rounded-2xl border-2 border-dashed border-pastelBlue bg-pastelBlue/10 text-center text-sm text-gray-500">
+					Aquí podrás mostrar un GIF o vídeo corto de la aplicación.
+				</div>
+			</div>
+		</article>
+	</section>
+
+	<section class="reveal mt-20 grid gap-8 md:grid-cols-2">
+		<div class="rounded-3xl bg-white p-8 shadow">
+			<h2 class="text-2xl font-semibold text-gray-900">Habilidades</h2>
+			<dl class="mt-6 space-y-4 text-sm text-gray-600">
+				<div>
+					<dt class="font-semibold text-gray-800">Backend y Lenguajes</dt>
+					<dd>Java, Kotlin, C#, Python, PHP, SQL</dd>
+				</div>
+				<div>
+					<dt class="font-semibold text-gray-800">Frontend y Web</dt>
+					<dd>HTML, CSS, Tailwind CSS, Astro, JavaScript</dd>
+				</div>
+				<div>
+					<dt class="font-semibold text-gray-800">Bases de datos & DevOps</dt>
+					<dd>MySQL, Firebase, Docker, Git</dd>
+				</div>
+				<div>
+					<dt class="font-semibold text-gray-800">Áreas de interés</dt>
+					<dd>Aplicaciones móviles, backend escalable, videojuegos, realidad virtual</dd>
+				</div>
+			</dl>
+		</div>
+		<div class="rounded-3xl bg-white p-8 shadow">
+			<h2 class="text-2xl font-semibold text-gray-900">Idiomas & Redes</h2>
+			<div class="mt-6 space-y-6 text-sm text-gray-600">
+				<div>
+					<h3 class="font-semibold text-gray-800">Idiomas</h3>
+					<p>Español (nativo), Inglés (nivel intermedio)</p>
+				</div>
+				<div>
+					<h3 class="font-semibold text-gray-800">Perfiles</h3>
+					<ul class="space-y-2">
+						<li>
+							<a href="https://www.linkedin.com/in/marioaj11" target="_blank" rel="noopener noreferrer" class="text-pastelOrange hover:underline">
+								linkedin.com/in/marioaj11
+							</a>
+						</li>
+						<li>
+							<a href="https://github.com/MarioAJ11" target="_blank" rel="noopener noreferrer" class="text-pastelOrange hover:underline">
+								github.com/MarioAJ11
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="contacto" class="reveal mt-20 rounded-3xl bg-pastelBlue/15 p-10 text-center">
+		<h2 class="text-2xl font-semibold text-gray-900">¿Colaboramos?</h2>
+		<p class="mt-4 text-gray-600">
+			Estoy abierto a oportunidades en desarrollo backend, aplicaciones móviles o proyectos de innovación digital.
+			Escríbeme y hablemos sobre cómo puedo aportar a tu equipo.
+		</p>
+		<div class="mt-6 flex flex-wrap justify-center gap-4 text-sm font-semibold">
+			<a href="mailto:alguacilmario6@gmail.com" class="rounded-full bg-pastelOrange px-6 py-3 text-white transition hover:brightness-110">
+				Contactar por email
+			</a>
+			<a href="https://linkedin.com/in/marioaj11" target="_blank" rel="noopener noreferrer" class="rounded-full border border-pastelOrange px-6 py-3 text-pastelOrange transition hover:bg-pastelOrange/10">
+				Enviarme un mensaje en LinkedIn
+			</a>
+		</div>
+	</section>
+
+	<script type="module">
+		import gsap from 'gsap';
+		const animate = () => {
+			gsap.from('.reveal', {
+				opacity: 0,
+				y: 40,
+				duration: 0.9,
+				ease: 'power3.out',
+				stagger: 0.15,
+			});
+		};
+		if (document.readyState !== 'loading') {
+			animate();
+		} else {
+			document.addEventListener('DOMContentLoaded', animate);
+		}
+	</script>
+</Layout>
