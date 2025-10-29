@@ -131,9 +131,16 @@ import Layout from "../layouts/Layout.astro";
 				</div>
 			</div>
 			<div class="relative z-10 flex items-center justify-center">
-				<div class="flex aspect-[9/16] w-full max-w-xs items-center justify-center rounded-2xl border-2 border-dashed border-pastelBlue/70 bg-gradient-to-br from-pastelBlue/20 via-white to-pastelOrange/20 text-center text-sm text-gray-600">
-					Aquí podrás mostrar un GIF o vídeo corto de la aplicación.
-				</div>
+				<video
+					class="aspect-[9/16] w-full max-w-xs rounded-2xl border-2 border-dashed border-pastelBlue/70 bg-gradient-to-br from-pastelBlue/20 via-white to-pastelOrange/20 object-cover shadow-inner"
+					src="/media/paradigma-media.mp4"
+					autoplay
+					muted
+					loop
+					playsinline
+				>
+					Tu navegador no soporta reproducción de vídeo.
+				</video>
 			</div>
 		</article>
 	</section>
