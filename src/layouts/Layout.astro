@@ -1,5 +1,7 @@
 ---
-// Props: title (string)
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+
 const { title = "Portafolio" } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -12,7 +14,19 @@ const { title = "Portafolio" } = Astro.props;
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
     <slot name="head" />
   </head>
-  <body class="bg-gray-50 min-h-screen font-inter">
-    <slot />
+  <body class="bg-gray-50 text-gray-800 min-h-screen font-inter">
+    <Header />
+    <main class="max-w-5xl mx-auto px-6 py-16">
+      <slot />
+    </main>
+    <footer class="mt-20 border-t border-pastelBlue/60 py-8 text-center text-sm text-gray-500">
+      <p class="font-medium text-gray-600">Construido con Astro, Tailwind CSS y GSAP</p>
+      <p class="mt-2 text-xs text-gray-500">© {new Date().getFullYear()} Mario Alguacil Juárez · Córdoba, España</p>
+      <div class="mt-4 flex justify-center gap-4 text-sm font-semibold text-pastelOrange">
+        <a href="mailto:alguacilmario6@gmail.com" class="transition hover:text-pastelBlue">Email</a>
+        <a href="https://www.linkedin.com/in/marioaj11" target="_blank" rel="noopener noreferrer" class="transition hover:text-pastelBlue">LinkedIn</a>
+        <a href="https://github.com/MarioAJ11" target="_blank" rel="noopener noreferrer" class="transition hover:text-pastelBlue">GitHub</a>
+      </div>
+    </footer>
   </body>
 </html>
