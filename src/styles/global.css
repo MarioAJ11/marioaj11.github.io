@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	.skill-pill {
+		display: inline-flex;
+		align-items: center;
+		border-radius: 9999px;
+		padding: 0.25rem 0.75rem;
+		font-size: 0.75rem;
+		font-weight: 600;
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+	}
+	.link-accent {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #ffb7a0;
+		transition: color 150ms ease;
+	}
+	.link-accent:hover {
+		color: #a0c4ff;
+	}
+}
