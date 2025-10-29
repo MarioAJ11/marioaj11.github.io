@@ -132,7 +132,7 @@ import Layout from "../layouts/Layout.astro";
 			</div>
 			<div class="relative z-10 flex items-center justify-center">
 				<video
-					class="aspect-[191/425] w-full max-w-[300px] rounded-2xl bg-black/90 object-contain shadow-2xl"
+					class="aspect-[191/425] w-full max-w-[260px] rounded-2xl bg-black/90 object-contain shadow-2xl"
 					src="/media/paradigma-media.mp4"
 					autoplay
 					muted
@@ -142,14 +142,14 @@ import Layout from "../layouts/Layout.astro";
 					Tu navegador no soporta reproducción de vídeo.
 				</video>
 			</div>
-			<dialog id="video-modal" class="video-modal rounded-3xl border-0 bg-transparent backdrop:bg-black/60">
-				<div class="relative mx-auto max-w-lg rounded-3xl bg-black/90 p-4 shadow-2xl">
-					<button type="button" data-close-video class="absolute -right-3 -top-3 rounded-full bg-white/90 px-2 py-1 text-xs font-semibold text-gray-700 shadow-md transition hover:bg-white">
+			<div id="video-overlay" class="video-overlay fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-6">
+				<div class="relative w-full max-w-2xl rounded-3xl bg-black/90 p-4 shadow-2xl">
+					<button type="button" data-close-video class="absolute -right-4 -top-4 rounded-full bg-white px-3 py-1 text-xs font-semibold text-gray-700 shadow transition hover:bg-white/90">
 						Cerrar
 					</button>
 					<video
 						src="/media/paradigma-media.mp4"
-						class="w-full rounded-2xl"
+						class="w-full rounded-2xl bg-black"
 						controls
 						autoplay
 						muted
@@ -159,7 +159,7 @@ import Layout from "../layouts/Layout.astro";
 						Tu navegador no soporta reproducción de vídeo.
 					</video>
 				</div>
-			</dialog>
+			</div>
 		</article>
 	</section>
 
@@ -266,34 +266,39 @@ import Layout from "../layouts/Layout.astro";
 			});
 		};
 		const setupVideoModal = () => {
-			const modal = document.getElementById('video-modal');
+			const overlay = document.getElementById('video-overlay');
 			const openBtn = document.querySelector('[data-action="expand-video"]');
-			if (!modal || !openBtn) return;
-			const closeBtn = modal.querySelector('[data-close-video]');
-			const modalVideo = modal.querySelector('video');
+			if (!overlay || !openBtn) return;
+			const closeBtn = overlay.querySelector('[data-close-video]');
+			const overlayVideo = overlay.querySelector('video');
 			const open = () => {
-				modal.showModal();
-				if (modalVideo) {
-					modalVideo.currentTime = 0;
-					modalVideo.play().catch(() => {});
+				overlay.classList.remove('hidden');
+				overlay.classList.add('flex');
+				document.body.classList.add('overflow-hidden');
+				if (overlayVideo) {
+					overlayVideo.currentTime = 0;
+					overlayVideo.play().catch(() => {});
 				}
 			};
 			const close = () => {
-				if (modal.open) modal.close();
-				if (modalVideo) {
-					modalVideo.pause();
+				overlay.classList.add('hidden');
+				overlay.classList.remove('flex');
+				document.body.classList.remove('overflow-hidden');
+				if (overlayVideo) {
+					overlayVideo.pause();
 				}
 			};
 			openBtn.addEventListener('click', open);
 			closeBtn?.addEventListener('click', close);
-			modal.addEventListener('click', (event) => {
-				if (event.target === modal) {
+			overlay.addEventListener('click', (event) => {
+				if (event.target === overlay) {
 					close();
 				}
 			});
-			modal.addEventListener('cancel', (event) => {
-				event.preventDefault();
-				close();
+			document.addEventListener('keydown', (event) => {
+				if (event.key === 'Escape' && !overlay.classList.contains('hidden')) {
+					close();
+				}
 			});
 		};
 		const init = () => {
