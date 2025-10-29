@@ -3,8 +3,8 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				pastelBlue: '#a0c4ff',
-				pastelOrange: '#ffb7a0',
+				pastelBlue: '#93DAFE',
+				pastelOrange: '#FF6720',
 			},
 			fontFamily: {
 				inter: ['Inter', 'sans-serif'],
