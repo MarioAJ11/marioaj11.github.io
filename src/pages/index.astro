@@ -1,0 +1,35 @@
+import "../styles/global.css";
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Portafolio Astro + Tailwind</title>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+		<style>
+			body { font-family: 'Inter', sans-serif; }
+		</style>
+	</head>
+	<body class="bg-pastelBlue min-h-screen flex flex-col items-center justify-center">
+			<h1 id="titulo" class="text-4xl font-bold text-pastelOrange mb-4 font-inter">¡Bienvenido a mi portafolio!</h1>
+			<p class="text-lg text-white font-inter">Sitio creado con Astro y Tailwind CSS.</p>
+			<script type="module">
+				import gsap from 'gsap';
+				window.addEventListener('DOMContentLoaded', () => {
+					gsap.from('#titulo', { opacity: 0, y: -40, duration: 1 });
+				});
+			</script>
+	</body>
+</html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1>Astro</h1>
+	</body>
+</html>
