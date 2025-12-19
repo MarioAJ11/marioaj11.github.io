@@ -99,7 +99,7 @@ export function Hero() {
                 <path d="M5 12h14" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
-              <span className="font-medium">Escríbeme</span>
+              <span className="font-medium">Contrátame</span>
             </a>
             <a 
               href="/cv.pdf" 
