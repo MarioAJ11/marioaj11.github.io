@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 
 export function Services() {
   const [isVisible, setIsVisible] = useState(false);
+  const [buttonText, setButtonText] = useState("Contrátame");
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -153,10 +154,12 @@ export function Services() {
         </div>
 
         <div className="flex justify-center mt-12 sm:mt-16 animate-fade-up" style={{ animationDelay: "0.5s" }}>
-          <a 
-            href="https://instagram.com/luiscortespenguin"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button 
+            onClick={() => {
+              navigator.clipboard.writeText('alguacilmario6@gmail.com');
+              setButtonText('¡Correo copiado!');
+              setTimeout(() => setButtonText('Contrátame'), 2000);
+            }}
             className="group bg-white border-2 border-black text-black px-6 py-3 sm:px-10 sm:py-5 rounded-full flex items-center gap-2 sm:gap-3 hover:bg-black hover:text-white hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer text-base sm:text-lg font-semibold"
           >
             <svg
@@ -170,11 +173,17 @@ export function Services() {
               strokeLinejoin="round"
               className="group-hover:translate-x-1 transition-transform"
             >
-              <path d="M5 12h14" />
-              <polyline points="12 5 19 12 12 19" />
+              {buttonText === 'Contrátame' ? (
+                <>
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </>
+              ) : (
+                <polyline points="20 6 9 17 4 12" />
+              )}
             </svg>
-            <span>Contratame</span>
-          </a>
+            <span>{buttonText}</span>
+          </button>
         </div>
       </div>
     </section>
