@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { BatAnimation } from "./bat-animation";
 
 export function Projects() {
   const [isVisible, setIsVisible] = useState(false);
-  const [videoModalOpen, setVideoModalOpen] = useState(false);
-  const [currentVideo, setCurrentVideo] = useState("");
+  const [expandedProject, setExpandedProject] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -34,9 +34,10 @@ export function Projects() {
       id: 1,
       title: "Paradigma Radio",
       description:
-        "Aplicación disponible en Google Play para escuchar, a la carta, los programas de Paradigma Media Andalucía. Construida con un enfoque nativo en Android y preparada para despliegue en iOS.",
+        "Aplicación disponible en Google Play para escuchar, a la carta, los programas de Paradigma Media Andalucía. Construida con un enfoque nativo en Android y preparada para despliegue en iOS. Permite escuchar los programas de radio, noticias y podcasts de la asociación.",
       technologies: ["Kotlin", "Android", "Firebase", "Google Play"],
       demo: "https://play.google.com/store/apps/details?id=org.paradigmamedia.paradigmaapp&pcampaignid=web_share",
+      website: "https://www.paradigmaradio.org/",
       image: "/paradigma-logo.png",
       showOnlyDemo: true,
       hasVideo: true,
@@ -49,7 +50,7 @@ export function Projects() {
         "Diversos proyectos de desarrollo backend, aplicaciones móviles y soluciones full-stack disponibles en mi repositorio de GitHub.",
       technologies: ["Java", "Kotlin", "Python", "C#", ".NET"],
       github: "https://github.com/MarioAJ11",
-      image: "/proyecto3.png",
+      showAnimation: true,
       showOnlyDemo: false,
     },
   ];
@@ -72,31 +73,37 @@ export function Projects() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className={`group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:border-gray-900 transition-all duration-500 hover:-translate-y-2 transform ${
+              className={`group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:border-gray-900 transition-all duration-500 ${
                 isVisible
                   ? "translate-y-0 opacity-100"
                   : "translate-y-10 opacity-0"
               }`}
               style={{ transitionDelay: `${index * 0.1}s` }}
             >
+              {/* Imagen o Animación */}
               <div className="h-64 overflow-hidden bg-gray-100 relative">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 p-4"
-                />
+                {project.showAnimation ? (
+                  <BatAnimation />
+                ) : (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 p-4"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
 
+              {/* Contenido */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-black transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-2">
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                   {project.description}
                 </p>
 
@@ -111,7 +118,32 @@ export function Projects() {
                   ))}
                 </div>
 
-                <div className="flex flex-col gap-2">
+                {/* Enlaces */}
+                <div className="flex flex-col gap-3">
+                  {project.website && (
+                    <a
+                      href={project.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-gray-700 hover:text-black transition-colors cursor-pointer"
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="2" y1="12" x2="22" y2="12" />
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                      </svg>
+                      <span className="text-sm font-semibold">Sitio web oficial</span>
+                    </a>
+                  )}
                   {project.showOnlyDemo && (
                     <a
                       href={project.demo}
@@ -138,10 +170,7 @@ export function Projects() {
                   )}
                   {project.hasVideo && (
                     <button
-                      onClick={() => {
-                        setCurrentVideo(project.videoUrl || "");
-                        setVideoModalOpen(true);
-                      }}
+                      onClick={() => setExpandedProject(expandedProject === project.id ? null : project.id)}
                       className="flex items-center gap-2 text-gray-700 hover:text-black transition-colors cursor-pointer"
                     >
                       <svg
@@ -153,10 +182,13 @@ export function Projects() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
+                        className={`transition-transform ${expandedProject === project.id ? 'rotate-90' : ''}`}
                       >
                         <polygon points="5 3 19 12 5 21 5 3" />
                       </svg>
-                      <span className="text-sm font-semibold">Ver demo en video</span>
+                      <span className="text-sm font-semibold">
+                        {expandedProject === project.id ? 'Ocultar' : 'Ver'} demo en video
+                      </span>
                     </button>
                   )}
                   {!project.showOnlyDemo && (
@@ -178,52 +210,26 @@ export function Projects() {
                     </a>
                   )}
                 </div>
+
+                {/* Video Expandible */}
+                {project.hasVideo && expandedProject === project.id && (
+                  <div className="mt-4 pt-4 border-t border-gray-200">
+                    <video
+                      src={project.videoUrl}
+                      className="w-full rounded-xl shadow-lg"
+                      controls
+                      autoPlay
+                      muted
+                      loop
+                    >
+                      Tu navegador no soporta reproducción de vídeo.
+                    </video>
+                  </div>
+                )}
               </div>
             </div>
           ))}
         </div>
-
-        {/* Video Modal */}
-        {videoModalOpen && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 sm:p-6"
-            onClick={() => setVideoModalOpen(false)}
-          >
-            <div
-              className="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setVideoModalOpen(false)}
-                className="absolute -top-4 -right-4 z-10 bg-white text-black rounded-full p-2 hover:bg-gray-200 transition-colors shadow-lg"
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              </button>
-              <video
-                src={currentVideo}
-                className="w-full rounded-2xl"
-                controls
-                autoPlay
-                muted
-                loop
-              >
-                Tu navegador no soporta reproducción de vídeo.
-              </video>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );

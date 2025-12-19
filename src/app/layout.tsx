@@ -4,8 +4,11 @@ import { Header } from "@/components/header";
 import { PageWrapper } from "@/components/page-wrapper";
 
 export const metadata: Metadata = {
-  title: "Pagina Personal ",
-  description: "Pagina Personal de Luis Cortes",
+  title: "Mario Alguacil Juárez - Desarrollador Backend",
+  description: "Portafolio personal de Mario Alguacil Juárez - Técnico Superior en Desarrollo de Aplicaciones Multiplataforma",
+  icons: {
+    icon: '/logo.png',
+  },
 };
 
 export default function RootLayout({
