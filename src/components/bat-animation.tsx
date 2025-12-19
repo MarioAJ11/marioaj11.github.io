@@ -2,12 +2,21 @@
 
 export function BatAnimation() {
   return (
-    <div className="w-full h-full flex items-center justify-center bg-gray-50">
+    <div className="w-full h-full flex items-center justify-center bg-gray-50 overflow-hidden">
       <style jsx>{`
+        .bat-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          position: relative;
+        }
         .bat {
           width: 1px;
           height: 1px;
-          transform: scale(2);
+          transform: scale(3);
           position: relative;
           animation: 0.4s bat steps(1) infinite;
         }
@@ -39,7 +48,9 @@ export function BatAnimation() {
           }
         }
       `}</style>
-      <div className="bat"></div>
+      <div className="bat-container">
+        <div className="bat"></div>
+      </div>
     </div>
   );
 }
