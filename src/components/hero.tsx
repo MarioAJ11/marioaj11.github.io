@@ -81,8 +81,11 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-up-delay-400 justify-center lg:justify-start">
-            <a 
-              href="mailto:alguacilmario6@gmail.com"
+            <button 
+              onClick={() => {
+                navigator.clipboard.writeText('alguacilmario6@gmail.com');
+                alert('Correo copiado: alguacilmario6@gmail.com');
+              }}
               className="group bg-white border-2 border-black text-black px-6 py-3 sm:px-8 sm:py-4 rounded-full flex items-center justify-center gap-2 sm:gap-3 hover:bg-black hover:text-white hover:scale-105 hover:rotate-1 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer text-sm sm:text-base"
             >
               <svg
@@ -96,11 +99,11 @@ export function Hero() {
                 strokeLinejoin="round"
                 className="group-hover:translate-x-1 transition-transform"
               >
-                <path d="M5 12h14" />
-                <polyline points="12 5 19 12 12 19" />
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
               </svg>
               <span className="font-medium">Contrátame</span>
-            </a>
+            </button>
             <a 
               href="/cv.pdf" 
               target="_blank"
